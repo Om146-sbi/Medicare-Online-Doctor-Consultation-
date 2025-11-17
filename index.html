@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MediCare - Online Doctor Consultation</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header Section -->
+  <div class="header-container">
+    <div class="logo-container">
+      <div class="hospital-logo">H</div>
+      <div class="hospital-name">
+        <h1>MediCare - Online Doctor Consultation</h1>
+        <p>Advanced Healthcare Solutions</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="time-display" id="currentTime"></div>
+      <!-- Logout Button Added Here -->
+      <button id="logoutBtn" onclick="logout()" style="display:none;">Logout</button>
+    </div>
+  </div>
+
+  <!-- Menu Section -->
+  <div class="menu">
+    <a href="#home" class="menu-item">Home</a>
+    <a href="#doctors" class="menu-item">Doctors</a>
+    <a href="#appointments" class="menu-item">Appointments</a>
+    <a href="#chat" class="menu-item">Chat</a>
+    <a href="#symptoms" class="menu-item">Symptom Checker</a>
+    <a href="#ai" class="menu-item">AI Assistant</a>
+    <a href="#founder" class="menu-item">Founder</a>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h2>Expert Medical Care at Your Fingertips</h2>
+    <p>Connect with top doctors, get instant consultations, and access comprehensive health services from the comfort of your home.</p>
+    <a href="#appointments" class="hero-btn">Book Appointment Now</a>
+  </div>
+
+  <div class="container">
+    <div class="main-content">
+      <div id="loginSection" class="section">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Enter your name" />
+        <select id="role">
+          <option value="">Select role</option>
+          <option value="patient">Patient</option>
+          <option value="doctor">Doctor</option>
+        </select>
+        <button onclick="login()">Login</button>
+        <p id="loginMsg" style="color:red; margin-top: 10px;"></p>
+      </div>
+
+      <div id="mainContent" style="display:none;">
+        <div class="section">
+          <h2>Welcome, <span id="userDisplay"></span></h2>
+        </div>
+
+        <div class="section" id="doctors">
+          <h2>Doctors Available</h2>
+          <div class="doctor-profile">
+            <div class="doctor-avatar">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&q=80" alt="Dr. Priya Sharma">
+            </div>
+            <div class="doctor-info">
+              <h3>Dr. Priya Sharma</h3>
+              <p>General Physician (Mon-Fri, 10AM-4PM)</p>
+            </div>
+          </div>
+          <div class="doctor-profile">
+            <div class="doctor-avatar">
+              <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=200&q=80" alt="Dr. Rahul Verma">
+            </div>
+            <div class="doctor-info">
+              <h3>Dr. Rahul Verma</h3>
+              <p>Cardiology (Mon-Fri, 9AM-2PM)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" id="appointments" style="display:none;">
+          <h2>Book Appointment</h2>
+          <form id="appointForm">
+            <input type="text" id="apptName" placeholder="Your name" required />
+            <select id="apptDoctor" required>
+              <option value="">Select Doctor</option>
+              <option>Dr. Priya Sharma</option>
+              <option>Dr. Rajesh Verma</option>
+              <option>Dr. Anjali Patel</option>
+            </select>
+            <input type="date" id="apptDate" required />
+            <button type="submit">Book Appointment</button>
+          </form>
+          <p id="apptMsg"></p>
+        </div>
+
+        <div class="section" id="chat" style="display:none;">
+          <h2>Chat with Doctor</h2>
+          <div id="chatBox"></div>
+          <input type="text" id="chatInput" placeholder="Type message..." />
+          <button onclick="sendMessage()">Send</button>
+        </div>
+
+        <div class="section" id="symptoms">
+          <h2>AI Symptom Checker</h2>
+          <textarea id="symptomInput" placeholder="Describe your symptoms..."></textarea>
+          <button onclick="checkSymptoms()">Check Symptoms</button>
+          <p id="symptomResult"></p>
+        </div>
+
+        <div class=\"section\" id=\"ai\">
+          <h2>AI Doctor Assistant</h2>
+          <input type=\"text\" id=\"aiQuestion\" placeholder=\"Ask the AI any health question...\" />
+          <button onclick=\"askAI()\">Ask AI</button>
+          <div id=\"aiAnswer\"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="section">
+        <h2>Our Services</h2>
+        <div class="feature-card">
+          <h3>24/7 Online Consultations</h3>
+          <p>Get medical advice anytime, anywhere with our round-the-clock service.</p>
+        </div>
+        <div class="feature-card">
+          <h3>AI-Powered Diagnosis</h3>
+          <p>Advanced AI technology helps in preliminary diagnosis and health assessment.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Secure Consultations</h3>
+          <p>All communications are encrypted and private for your peace of mind.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Contact Information</h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>📧</span>
+            <a href="mailto:omjee7777@gmail.com">omjee7777@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <span>📞</span>
+            <a href="tel:+916207131572">+91 916207131572</a>
+          </div>
+        </div>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/" title="Facebook" target="_blank" class="facebook">f</a>
+          <a href="https://wa.me/911234567890" title="WhatsApp" target="_blank" class="whatsapp">w</a>
+          <a href="https://instagram.com/" title="Instagram" target="_blank" class="instagram">i</a>
+          <a href="https://linkedin.com/" title="LinkedIn" target="_blank" class="linkedin">in</a>
+          <a href="https://twitter.com/" title="Twitter" target="_blank" class="twitter">t</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="founder">
+    <h2>Founder Profile</h2>
+    <div class="founder-profile">
+      <div class="founder-avatar">
+        <img src="https://uploads.onecompiler.io/43yzvtk52/43yzz7kh2/WhatsApp%20Image%202025-05-26%20at%2023.25.40%20(1).jpeg" alt="Er. Om Kumar">
+      </div>
+      <div class="founder-info">
+        <h3>Er. Om Kumar</h3>
+        <p>Founder & CEO, MediCare - Online Doctor Consultation.</p>
+        <p>Er. Om Kumar has dedicated his career to making quality healthcare accessible to everyone through innovative digital solutions.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 MediCare - Online Doctor Consultation. All rights reserved.</p>
+    <p>Designed with ❤️ for better healthcare access</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
